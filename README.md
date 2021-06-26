@@ -7,6 +7,8 @@ A distributer ledger with ISIS algo for total ordering of messages
 ## Description
 This has an `ledger:append` (with `{ Uid, self(), "Message" }`) that adds to the ledger and a `ledger:get` that returns the ledger. 
 
+This implementation fails after more than n/2 nodes fail.
+
 ## Thanks
 
 * [Formalizing and ImplementingDistributed Ledger Objects](https://arxiv.org/pdf/1802.07817.pdf) paper by Antonio Fernández Anta, Chryssis Georgiou, Kishori Konwar and Nicolas Nicolaou.
