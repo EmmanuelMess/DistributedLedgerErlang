@@ -7,9 +7,42 @@ A distributer ledger with ISIS algo for total ordering of messages
 ## Description
 This has an `ledger:append` (with `{ Uid, self(), "Message" }`) that adds to the ledger and a `ledger:get` that returns the ledger. 
 
-One ledger per node and one node per ledger (no pure-client nodes). First connect everything and then start with `ledger:start()` at each node, you can stop the ledger with `ledger:stop()`.
+One ledger per node and one node per ledger (no pure-client nodes).
 
 This implementation fails after more than n/2 nodes fail.
+
+## Running
+
+Compile everything:
+
+```sh
+erl -compile isis ledger
+```
+
+Run this on each terminal (one per node):
+
+```sh
+erl -setcookie wermer -snode <nodename>
+net_adm:ping('<othernodename>@<host>').
+```
+
+Connect everything and then start with `ledger:start()` at each node, you can stop the ledger with `ledger:stop()`:
+
+```erl
+ledger:start().
+```
+
+Then you can use the ledger with `ledger:append` and `ledger:get()`:
+
+```erl
+> ledger:get().
+[]
+
+> ledger:append({0, self(), "Hola"}).
+
+> ledger:get().
+[{0, <0.72.0>, "Hola"}]
+```
 
 ## Thanks
 
