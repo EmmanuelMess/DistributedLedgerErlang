@@ -7,6 +7,8 @@ A distributer ledger with ISIS algo for total ordering of messages
 ## Description
 This has an `ledger:append` (with `{ Uid, self(), "Message" }`) that adds to the ledger and a `ledger:get` that returns the ledger. 
 
+One ledger per node and one node per ledger (no pure-client nodes). First connect everything and then start with `ledger:start()` at each node, you can stop the ledger with `ledger:stop()`.
+
 This implementation fails after more than n/2 nodes fail.
 
 ## Thanks
